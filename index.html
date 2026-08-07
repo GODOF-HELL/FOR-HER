@@ -637,7 +637,7 @@ video{
 <div class="title">If I Were There Right Now</div>
 
     <div class="video">
-      <video id="v2" autoplay muted playsinline preload="auto" controls>
+      <video id="v2" autoplay muted playsinline>
        <source src="hug.mp4#t=264,280" type="video/mp4">
       </video>
     </div>
@@ -655,7 +655,7 @@ video{
     <div class="title">Five Reasons I Adore You</div>
 
     <div class="video">
-      <video id="v3" autoplay muted playsinline preload="auto" controls>
+      <video id="v3" autoplay muted playsinline>
         <source src="3rd.mp4#t=326,342" type="video/mp4">
       </video>
     </div>
@@ -777,7 +777,7 @@ video{
     <div class="title">Until I Can Tell You This in Person</div>
 
     <div class="video">
-      <video id="v5" autoplay muted playsinline preload="auto" controls>
+      <video id="v5" autoplay muted playsinline>
         <source src="Kiss.mp4" type="video/mp4">
       </video>
     </div>
@@ -825,7 +825,7 @@ const clips = {
   v1: { start: 10,  end: 22  },   // intro
   v2: { start: 264, end: 280 },   // hug
   v3: { start: 326, end: 342 },   // cuddling
-  v5: { start: 378, end: 394 }    // ending
+  v5: { start: 0, end: 15 }    // ending
 };
 
 function playClip(id){
