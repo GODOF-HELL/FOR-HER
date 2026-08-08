@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, My Favorite Person</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:
+    linear-gradient(rgba(255,245,250,.18), rgba(245,240,255,.18)),
+    url('Background.jpeg') center center / cover no-repeat fixed;
+  color:#4c1d95;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+.page{
+  display:none;
+  width:100vw;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:28px 22px;
+  overflow-y:auto;
+}
+.page.active{
+  display:flex;
+  animation:fade .45s ease;
+}
+@keyframes fade{
+  from{opacity:0;transform:scale(.98)}
+  to{opacity:1;transform:scale(1)}
+}
+.card{
+  width:min(92vw,430px);
+  background:rgba(255,255,255,.58);
+  backdrop-filter:blur(24px);
+  border-radius:34px;
+  padding:24px;
+  text-align:center;
+  margin:auto;
+
+  /* Elegant gold border */
+  border:1.5px solid rgba(255,215,120,.65);
+
+  /* Soft outer shadow */
+  box-shadow:
+    0 24px 60px rgba(111,76,255,.16),
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 0 28px rgba(255,215,120,.16);
+
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:1.5px;
+  border-radius:34px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,240,180,.95),
+    rgba(255,215,120,.95),
+    rgba(255,245,210,.95),
+    rgba(255,215,120,.95)
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+
+  pointer-events:none;
+  opacity:.9;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:-60%;
+  width:50%;
+  height:160%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:rotate(18deg);
+  animation:cardShine 6s ease-in-out infinite;
+}
+
+@keyframes cardShine{
+  0%,70%{
+    left:-60%;
+  }
+  100%{
+    left:130%;
+  }
+}
+.title{
+  font-family:'Great Vibes', cursive;
+  font-size:30px;
+  line-height:1.15;
+  color:#8b3dff;
+  text-shadow:0 0 18px rgba(255,120,190,.35);
+  margin-bottom:12px;
+  letter-spacing:.3px;
+}
+@media (max-width: 430px){
+  .title{
+    font-size:26px;
+  }
+}
+.subtitle{
+  color:#6b5a7a;
+  font-size:14px;
+  margin-bottom:14px;
+}
+.video{
+  width:100%;
+  border-radius:22px;
+  overflow:hidden;
+  margin:14px 0;
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
+}
+.video{
+  position: relative;
+  overflow: visible;
+}
+
+.video::before{
+  content:"";
+  position:absolute;
+  top:-18px;
+  left:-18px;
+  right:-18px;
+  bottom:-18px;
+  border-radius:34px;
+  background:radial-gradient(circle, rgba(255,120,190,.45), rgba(196,181,253,.25), transparent 72%);
+  filter:blur(22px);
+  z-index:-1;
+}
+
+#p2 .card{
+  background:rgba(255,255,255,.86);
+  box-shadow:0 25px 60px rgba(255,120,190,.25);
+}
+#p2 .video::after{
+  content:"        ";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  letter-spacing:18px;
+  color:rgba(255,255,255,0.75);
+  animation:loveFloat 3.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes loveFloat{
+  0%{
+    opacity:0;
+    transform:translateY(20px) scale(.9);
+  }
+  20%{
+    opacity:.9;
+  }
+  50%{
+    opacity:1;
+    transform:translateY(-8px) scale(1);
+  }
+  80%{
+    opacity:.7;
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-24px) scale(1.08);
+  }
+  }
+video{
+  width:100%;
+  display:block;
+}
+.text{
+  color:#5d5066;
+  line-height:1.7;
+}
+.reasons{
+  margin-top:12px;
+  text-align:left;
+}
+
+.reason{
+  opacity:0;
+  transform:translateY(10px);
+  color:#5d5066;
+  margin:10px 0;
+  padding-left:8px;
+  border-left:3px solid rgba(255,120,190,.35);
+  transition:all .6s ease;
+}
+
+.reason.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 24px;
+  border-radius:999px;
+  border:1px solid rgba(212,175,55,.55);
+  background:linear-gradient(180deg,#fff8e8,#ffe9b8);
+  color:#7a3b00;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:
+    0 10px 24px rgba(212,175,55,.18),
+    0 0 0 1px rgba(255,255,255,.35) inset;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease,
+    background .18s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 14px 30px rgba(212,175,55,.28),
+    0 0 18px rgba(255,215,120,.22);
+}
+
+.btn:hover::before{
+  animation:btnShine .9s ease;
+}
+
+.btn:active{
+  transform:translateY(0) scale(.98);
+  box-shadow:
+    0 8px 18px rgba(212,175,55,.2),
+    0 0 12px rgba(255,215,120,.16);
+}
+
+@keyframes btnShine{
+  from{ left:-120%; }
+  to{ left:140%; }
+}
+.hearts,.stars,.balloons{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+.heart{
+  position:absolute;
+  bottom:-30px;
+  color:#ff5fa2;
+  opacity:.45;
+  animation:float 10s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(0) scale(.8)}
+  to{transform:translateY(-110vh) scale(1.3);opacity:0}
+}
+.star{
+  position:absolute;
+  color:#fff7c2;
+  animation:twinkle 2s infinite ease-in-out;
+}
+@keyframes twinkle{
+  0%,100%{opacity:.2;transform:scale(.8)}
+  50%{opacity:1;transform:scale(1.3)}
+}
+.balloon{
+  position:absolute;
+  width:42px;
+  height:54px;
+  border-radius:50%;
+  animation:balloon 6s ease-in-out infinite;
+}
+.balloon:after{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:52px;
+  width:2px;
+  height:70px;
+  background:#999;
+}
+@keyframes balloon{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+.spark{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#FFD54F; /* warm gold */
+  box-shadow:
+    0 0 6px #FFD54F,
+    0 0 12px #FFC107,
+    0 0 18px rgba(255,193,7,.8);
+  pointer-events:none;
+  animation:spark .9s ease-out forwards;
+}
+@keyframes spark{
+  to{
+    transform:translate(var(--x),var(--y)) scale(0);
+    opacity:0;
+  }
+}
+.cake{
+  width:180px;
+  margin:16px auto;
+}
+.flame path{
+  animation:flameGlow .35s ease-in-out infinite;
+}
+
+@keyframes flameGlow{
+  0%{
+    opacity:.75;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:.8;
+  }
+}
+
+.flame.out path{
+  animation:none;
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+@keyframes floatGift{
+  0%,100%{transform:translateY(0) rotate(-3deg);}
+  50%{transform:translateY(-10px) rotate(3deg);}
+}
+.firework{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+}
+@keyframes fireworkBurst{
+  from{
+    transform:translate(0,0) scale(1);
+    opacity:1;
+  }
+  to{
+    transform:translate(var(--x), var(--y)) scale(0);
+    opacity:0;
+  }
+
+#p4 .card{
+  transition:background .6s ease, box-shadow .6s ease;
+}
+
+#p4 .card.wished{
+  background:rgba(255,255,255,.92);
+  box-shadow:0 0 40px rgba(255,215,120,.35), 0 25px 60px rgba(255,120,190,.25);
+}
+
+.page{
+  display:none;
+  width:100vw;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:28px 22px;
+  overflow-y:auto;
+  transform-origin:left center;
+}
+
+.page.active{
+  display:flex;
+}
+}
+.fairy-dust{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.dust{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#ffd54f;
+  box-shadow:
+    0 0 6px rgba(255,213,79,.9),
+    0 0 12px rgba(255,193,7,.6);
+  opacity:.75;
+  animation:floatDust linear infinite;
+}
+
+@keyframes floatDust{
+  from{
+    transform:translateY(110vh) translateX(0) scale(.7);
+    opacity:0;
+  }
+  10%{
+    opacity:.75;
+  }
+  50%{
+    transform:translateY(50vh) translateX(18px) scale(1);
+  }
+  to{
+    transform:translateY(-10vh) translateX(-18px) scale(.8);
+    opacity:0;
+  }
+}
+
+.card{
+  position:relative;
+  z-index:2;
+}
+.cake{
+  width:220px;
+  max-width:100%;
+  display:block;
+  margin:10px auto 18px;
+  filter:drop-shadow(0 12px 24px rgba(255,120,190,.18));
+}
+
+.flame{
+  animation:none;
+}
+
+.flame.out{
+  opacity:0;
+  transition:opacity .35s ease;
+}
+
+.smoke{
+  opacity:0;
+}
+
+.smoke.show{
+  opacity:1;
+}
+
+.smoke.show .puff{
+  animation:smokeDrift 2.6s ease-out infinite;
+}
+
+.smoke.show .puff:nth-child(2){ animation-delay:.15s; }
+.smoke.show .puff:nth-child(3){ animation-delay:.3s; }
+.smoke.show .puff:nth-child(4){ animation-delay:.45s; }
+.smoke.show .puff:nth-child(5){ animation-delay:.6s; }
+
+@keyframes smokeDrift{
+  0%{
+    opacity:.7;
+    transform:translateY(0) scale(.9);
+  }
+  100%{
+    opacity:.12;
+    transform:translateY(-18px) scale(1.25);
+  }
+}
+.divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:18px 0 18px;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+  width:64px;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(212,175,55,0),
+    rgba(212,175,55,.9),
+    rgba(212,175,55,0)
+  );
+}
+
+.divider span{
+  color:#d4af37;
+  font-size:18px;
+  text-shadow:0 0 8px rgba(212,175,55,.35);
+}
+.title{
+  opacity:0;
+  transform:translateY(12px);
+}
+
+.page.active .title{
+  animation:titleReveal .8s ease .15s forwards;
+}
+
+@keyframes titleReveal{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.signature-wrap{
+  margin-top:26px;
+  text-align:center;
+}
+
+.signature-line{
+  width:120px;
+  height:1px;
+  margin:0 auto 12px;
+  background:linear-gradient(
+    to right,
+    rgba(212,175,55,0),
+    rgba(212,175,55,.9),
+    rgba(212,175,55,0)
+  );
+}
+
+.signature{
+  font-family:'Great Vibes', cursive;
+  font-size:34px;
+  color:#7c3aed;
+  text-shadow:0 0 12px rgba(255,120,190,.28);
+  overflow:hidden;
+  white-space:nowrap;
+  width:0;
+  margin:0 auto;
+  border-right:2px solid rgba(212,175,55,.7);
+}
+
+.page.active .signature{
+  animation:writeSignature 2.2s steps(22,end) .6s forwards,
+             cursorFade .4s linear 2.8s forwards;
+}
+
+@keyframes writeSignature{
+  from{ width:0; }
+  to{ width:100%; }
+}
+
+@keyframes cursorFade{
+  to{ border-right-color:transparent; }
+}.petals{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+}
+
+.petal{
+  position:absolute;
+  width:14px;
+  height:10px;
+  background:linear-gradient(135deg,#ffd7e8,#ffc4dc);
+  border-radius:70% 30% 70% 30%;
+  opacity:.55;
+  filter:blur(.2px);
+  animation:petalFall linear infinite;
+}
+
+@keyframes petalFall{
+  0%{
+    transform:translateY(-12vh) translateX(0) rotate(0deg);
+    opacity:0;
+  }
+  10%{
+    opacity:.55;
+  }
+  50%{
+    transform:translateY(45vh) translateX(18px) rotate(120deg);
+  }
+  100%{
+    transform:translateY(112vh) translateX(-22px) rotate(260deg);
+    opacity:0;
+  }
+}
+.memory-text{
+  font-size:15px;
+  line-height:1.9;
+  text-align:center;
+  color:#5b3b86;
+  max-width:560px;
+  margin:0 auto 22px;
+}
+.hold-hand{
+  width:130px;
+  height:130px;
+  margin:22px auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  background:radial-gradient(circle,#fff8e8,#ffe9b8);
+  border:2px solid rgba(212,175,55,.45);
+  box-shadow:
+    0 0 0 rgba(255,215,120,0),
+    0 14px 32px rgba(212,175,55,.18);
+  transition:transform .15s ease, box-shadow .25s ease;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.hold-hand.holding{
+  transform:scale(1.08);
+  box-shadow:
+    0 0 28px rgba(255,215,120,.55),
+    0 18px 40px rgba(212,175,55,.28);
+}
+.cover-card{
+  text-align:center;
+  padding:34px 28px;
+}
+
+.cover-label{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(212,175,55,.35);
+  color:#7c3aed;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.4px;
+  margin-bottom:10px;
+}
+
+.cover-title{
+  font-size:36px;
+  margin-bottom:14px;
+}
+
+.cover-text{
+  font-size:16px;
+  line-height:1.9;
+  color:#5d5066;
+  margin-bottom:24px;
+}
+
+#p0 .card{
+  animation:coverRise .9s ease both;
+}
+
+@keyframes coverRise{
+  from{
+    opacity:0;
+    transform:translateY(18px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+</style>
+</head>
+<body>
+<div id="fairyDust" class="fairy-dust"></div>
+<div class="balloons">
+  <div class="balloon" style="left:8%;top:8%;background:#ff8fc1"></div>
+  <div class="balloon" style="right:10%;top:10%;background:#b388ff"></div>
+  <div class="balloon" style="left:22%;top:2%;background:#ffd166"></div>
+</div>
+<div id="petals" class="petals"></div>
+
+<div class="stars">
+  <div class="star" style="top:8%;left:12%"></div>
+  <div class="star" style="top:18%;right:15%"></div>
+  <div class="star" style="bottom:16%;left:20%"></div>
+  <div class="star" style="bottom:10%;right:18%"></div>
+</div>
+
+<div class="hearts">
+  <div class="heart" style="left:8%;animation-duration:11s"></div>
+  <div class="heart" style="left:28%;animation-duration:13s"></div>
+  <div class="heart" style="left:50%;animation-duration:12s"></div>
+  <div class="heart" style="left:74%;animation-duration:15s"></div>
+  <div class="heart" style="left:92%;animation-duration:14s"></div>
+</div>
+<audio id="bgMusic" preload="auto">
+  <source src="Music.mp3" type="audio/mpeg">
+</audio>
+<section id="p0" class="page active">
+  <div class="card cover-card">
+    <div class="cover-label">For Shivika</div>
+
+    <div class="divider"><span>❦</span></div>
+
+    <div class="title cover-title">Before you begin…</div>
+
+    <p class="text cover-text">
+      If birthdays were made of stars, I would have borrowed the whole sky for you.<br><br>
+
+      This little place isn’t a website.<br>
+ It’s a quiet corner where I’ve hidden pieces of my heart ❤️<br>
+The moments that stayed,<br>
+The smiles that never left,<br>
+And the love that kept growing in the spaces between our days.<br><br>
+
+      So pause for a moment.✋🏻<br>
+Let the world become a little quieter,🫶🏻<br>
+And walk through these pages the way we walk together 👫🏻<br>
+Slowly, gently, and hand in hand.🤝🏻<br><br>
+
+      Tonight is about you.🌌<br>
+About the girl who made ordinary days feel unforgettable.<br><br>
+
+Happy Birthday, my love.<br>
+Now come a little closer…
+    </p>
+
+    <a class="btn" onclick="go('p1',event)">I'm ready ❤️</a>
+  </div>
+</section>
+<section id="p1" class="page">
+  <div class="card">
+
+    <div class="title">Happy Birthday</div>
+    <div class="subtitle">A letter written only for you.</div>
+
+  <div id="letter" style="font-size:80px;margin:20px 0;animation:floatGift 2.5s ease-in-out infinite;transition:transform .4s ease, opacity .4s ease;">
+  💌
+</div>
+
+    <p class="text">
+      Thank you for opening this little world I made for you.<br><br>
+      The page before this was an invitation, this page is the beginning of everything I’ve been carrying quietly inside my heart.<br><br>
+      Before the cake, before the wishes, and before everyone celebrates you, I wanted a moment that belonged only to us.<br><br>
+      Think of this as the first page of a love letter that has been waiting for you all along.<br><br>
+    </p>
+
+    <a class="btn" onclick="openLetter()">
+  Open the letter 
+</a>
+
+  </div>
+</section>
+
+<section id="p2" class="page">
+  <div class="card">
+<div class="title">If I Were There Right Now</div>
+
+    <div class="video">
+      <video id="v2" autoplay muted playsinline>
+       <source src="hug.mp4#t=264,280" type="video/mp4">
+      </video>
+    </div>
+<div class="divider"><span>❦</span></div>
+    <p class="text">
+ If I were there right now, I wouldn’t start with a speech.<br><br>
+ I’d look at you for a few extra seconds, smile because you’re impossible not to smile at, and gently move that one strand of hair that always finds its way across your face.<br><br>
+ I’d hold your hand, pull you a little closer, and whisper the first “Happy Birthday” so softly that only you could hear it.<br><br>
+ I’d steal a hug that lasts longer than it should, and in that hug I’d try to say everything I never manage to say properly.<br><br>
+ Until that moment comes, let these words be my arms around you.<br><br>
+    </p>
+
+    <a class="btn" onclick="go('p3',event)">Stay with me a little longer </a>
+  </div>
+</section>
+
+<section id="p3" class="page">
+  <div class="card">
+    <div class="title">Five Reasons I Adore You</div>
+
+    <div class="video">
+      <video id="v3" autoplay muted playsinline>
+        <source src="3rd.mp4#t=326,342" type="video/mp4">
+      </video>
+    </div>
+<div class="divider"><span>❦</span></div>
+    <div id="reasons" class="reasons">
+      <div class="reason">The way you smile — It has this strange power to make ordinary moments feel unforgettable.</div>
+      <div class="reason">Your heart — You care deeply, even when you pretend you don’t.</div>
+      <div class="reason">The way you make me feel safe — Even from far away, you somehow make the world softer.</div>
+      <div class="reason">Your little habits — The tiny things you probably don’t notice are the things I remember the most.</div>
+      <div class="reason">You — Not because you’re perfect, but because you’re wonderfully, beautifully yourself.</div>
+    </div>
+
+    <a id="p3Btn" class="btn hidden" onclick="go('p4',event)">There's something I want you to do </a>
+  </div>
+</section>
+
+<section id="p4" class="page">
+  <div class="card">
+    <div class="title">Make a Wish</div>
+
+    <svg class="cake" viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- glow -->
+  <defs>
+    <radialGradient id="cakeGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffe7a6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffe7a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="110" cy="80" r="70" fill="url(#cakeGlow)"/>
+
+  <!-- cake stand -->
+  <ellipse cx="110" cy="220" rx="70" ry="12" fill="#e7d8ff"/>
+
+  <!-- bottom layer -->
+  <rect x="35" y="145" width="150" height="55" rx="14" fill="#ffbfd9" stroke="#ffd54f" stroke-width="2"/>
+
+  <!-- middle layer -->
+  <rect x="50" y="105" width="120" height="45" rx="12" fill="#ffd2e5" stroke="#ffd54f" stroke-width="2"/>
+
+  <!-- top layer -->
+  <rect x="70" y="70" width="80" height="38" rx="10" fill="#ffe4ef" stroke="#ffd54f" stroke-width="2"/>
+
+  <!-- frosting drips -->
+  <path d="M50 105 C60 120 70 95 80 108 C90 122 102 96 112 110 C122 124 134 98 145 110 C155 120 165 102 170 110 L170 118 L50 118 Z" fill="#fff7fb"/>
+
+  <!-- Candles (stay visible) -->
+<g id="candleGroup" onclick="blow(event)" style="cursor:pointer">
+  <rect x="74" y="38" width="6" height="28" rx="3" fill="#9b5cff"/>
+  <rect x="90" y="34" width="6" height="32" rx="3" fill="#ff6fa5"/>
+  <rect x="107" y="30" width="6" height="36" rx="3" fill="#7c3aed"/>
+  <rect x="124" y="34" width="6" height="32" rx="3" fill="#ff8ab5"/>
+  <rect x="140" y="38" width="6" height="28" rx="3" fill="#9b5cff"/>
+</g>
+
+<!-- Flames (disappear on blow) -->
+<g id="flameGroup" class="flame">
+  <path d="M77 24 C83 30 83 40 77 46 C71 40 71 30 77 24 Z" fill="#ffd166"/>
+  <path d="M77 29 C80 34 80 39 77 42 C74 39 74 34 77 29 Z" fill="#fff4b3"/>
+
+  <path d="M93 20 C99 26 99 36 93 42 C87 36 87 26 93 20 Z" fill="#ffd166"/>
+  <path d="M93 25 C96 30 96 35 93 38 C90 35 90 30 93 25 Z" fill="#fff4b3"/>
+
+  <path d="M110 16 C116 22 116 34 110 40 C104 34 104 22 110 16 Z" fill="#ffd166"/>
+  <path d="M110 21 C113 27 113 32 110 35 C107 32 107 27 110 21 Z" fill="#fff4b3"/>
+
+  <path d="M127 20 C133 26 133 36 127 42 C121 36 121 26 127 20 Z" fill="#ffd166"/>
+  <path d="M127 25 C130 30 130 35 127 38 C124 35 124 30 127 25 Z" fill="#fff4b3"/>
+
+  <path d="M143 24 C149 30 149 40 143 46 C137 40 137 30 143 24 Z" fill="#ffd166"/>
+  <path d="M143 29 C146 34 146 39 143 42 C140 39 140 34 143 29 Z" fill="#fff4b3"/>
+</g>
+  
+<g id="smokeGroup" class="smoke" opacity="0">
+  <g class="puff" transform="translate(77,20)">
+    <circle cx="0" cy="0" r="3" fill="#c9c9c9"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#d8d8d8"/>
+    <circle cx="-2" cy="-12" r="2" fill="#e6e6e6"/>
+  </g>
+
+  <g class="puff" transform="translate(93,16)">
+    <circle cx="0" cy="0" r="3" fill="#c9c9c9"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#d8d8d8"/>
+    <circle cx="-2" cy="-12" r="2" fill="#e6e6e6"/>
+  </g>
+
+  <g class="puff" transform="translate(110,12)">
+    <circle cx="0" cy="0" r="3" fill="#c9c9c9"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#d8d8d8"/>
+    <circle cx="-2" cy="-12" r="2" fill="#e6e6e6"/>
+  </g>
+
+  <g class="puff" transform="translate(127,16)">
+    <circle cx="0" cy="0" r="3" fill="#c9c9c9"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#d8d8d8"/>
+    <circle cx="-2" cy="-12" r="2" fill="#e6e6e6"/>
+  </g>
+
+  <g class="puff" transform="translate(143,20)">
+    <circle cx="0" cy="0" r="3" fill="#c9c9c9"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#d8d8d8"/>
+    <circle cx="-2" cy="-12" r="2" fill="#e6e6e6"/>
+  </g>
+</g>
+
+  <text x="110" y="242" text-anchor="middle" font-size="16" fill="#7c3aed">Tap the candles</text>
+</svg>
+<div class="divider"><span>❦</span></div>
+    <p class="text" id="wishText">   Close your eyes for a second.<br><br>
+Forget the distance, forget the noise, and imagine that I’m standing right beside you.<br><br>
+Take a deep breath, think of one thing your heart truly wants, and let this moment belong only to you.<br><br>
+When you’re ready, blow out the candles.<br><br>
+    </p>
+
+    <a class="btn hidden" id="wishBtn" onclick="go('p4b',event)">Wish granted </a>
+  </div>
+</section>
+
+<section id="p4b" class="page">
+  <div class="card">
+    <div class="title">If we were together right now…</div>
+
+    <div class="divider"><span>❦</span></div>
+
+    <p class="text memory-text">
+      If we were together right now, we’d probably be laughing over something completely stupid.<br><br>
+I’d insist on taking too many photos of you, and you’d pretend to be annoyed while secretly smiling in every single one.<br><br>
+We’d cut the cake, steal bites from each other’s plates, walk without any destination, and let the night become a memory we’d keep talking about for years.<br><br>
+I can’t give you that exact day today.<br><br>
+But I can promise you this: I’m already looking forward to the day when “if we were together” becomes “remember when we were.”<br><br>
+    </p>
+
+    <a class="btn" onclick="go('p4c',event)">Come a little closer ❤️</a>
+  </div>
+</section>
+
+<section id="p4c" class="page">
+  <div class="card">
+    <div class="title">Hold My Hand</div>
+
+    <div class="divider"><span>❦</span></div>
+
+    <p class="text">
+ For the next five seconds, imagine this isn’t a screen.<br><br>
+Imagine it’s my hand reaching out to you.<br><br>
+No matter how many kilometres are between us, I want you to know that I’m still choosing you, still thinking of you, and still walking toward the future I hope we share.<br><br>
+So hold my hand for a moment…<br><br>
+and let the distance lose for five second<br><br>
+</p>
+    <div id="holdHand" class="hold-hand">
+      🤍
+    </div>
+
+    <p class="text" id="holdText" style="margin-top:16px;">
+      Press and hold.
+    </p>
+  </div>
+</section>
+
+<section id="p5" class="page">
+  <div class="card">
+    <div class="title">Until I Can Tell You This in Person</div>
+
+    <div class="video">
+      <video id="v5" autoplay muted playsinline>
+        <source src="Kiss.mp4" type="video/mp4">
+      </video>
+    </div>
+<div class="divider"><span>❦</span></div>
+    <p class="text" id="p5Text">
+There are things that deserve more than text.<br><br>
+More than calls.<br><br>
+More than late-night messages.<br><br>
+This is one of them.<br><br>
+Until I can stand in front of you, look into your eyes, hold your face, and tell you how much you mean to me…<br><br>
+let this be my small promise that my love is already on its way to you.<br><br>
+    </p>
+
+    <a class="btn" onclick="go('p6',event)">Open the final letter ❤️</a>
+  </div>
+</section>
+
+<section id="p6" class="page">
+  <div class="card">
+    <div class="title">One Last Thing...</div>
+
+    <p class="text">
+      If you’ve reached this page, then you’ve walked through every little corner of the world I made for you.<br><br>
+I don’t know what made you smile, what made you pause, or what made your heart feel full, but I hope somewhere between these pages you felt what I was trying so hard to say.<br><br>
+You are one of the most beautiful parts of my life.<br><br>
+You have given me memories I replay without trying, comfort I never expected, and a kind of happiness that quietly changed me.<br><br>
+I know I’m not beside you today, and that hurts more than I can explain.<br><br>
+But distance is only measuring space, it has never been able to measure love.<br><br>
+So here’s my last wish for your birthday:<br><br>
+May you always feel loved, protected, understood, and cherished.<br><br>
+May every version of your future be kinder than your past.<br><br>
+And may I be lucky enough to keep celebrating birthdays with you for a very, very long time.<br><br>
+Happy Birthday, my love.
+Until I can say all of this in person…
+keep a little piece of my heart with you.
+
+<div class="signature-wrap">
+  <div class="signature-line"></div>
+  <div class="signature">— Yours, Hritvik ❤️</div>
+</div>
+    </p>
+
+    <a class="btn" onclick="go('p0',event)">Read it one more time 💌</a>
+  </div>
+</section>
+<script>
+const clips = {
+  v1: { start: 10,  end: 22  },   // intro
+  v2: { start: 264, end: 280 },   // hug
+  v3: { start: 326, end: 342 },   // cuddling
+  v5: { start: 0, end: 15}    // ending
+};
+
+function playClip(id){
+  const video = document.getElementById(id);
+  const clip = clips[id];
+  if(!video || !clip) return;
+
+  // pause first so old playback stops
+  video.pause();
+
+  const startPlayback = () => {
+    video.currentTime = clip.start;
+    video.play().catch(()=>{});
+  };
+
+  if (video.readyState >= 1) {
+    startPlayback();
+  } else {
+    video.addEventListener('loadedmetadata', startPlayback, { once: true });
+    video.load();
+  }
+
+  video.ontimeupdate = () => {
+    if (video.currentTime >= clip.end) {
+      video.currentTime = clip.start;
+    }
+  };
+}
+
+function resetCake(){
+  const flames = document.getElementById('flameGroup');
+  flames.classList.remove('out');
+  flames.style.opacity = '1';
+  const smoke = document.getElementById('smokeGroup');
+  smoke.classList.remove('show');
+  document.getElementById('wishText').innerHTML = 
+'Close your eyes for a second. <br><br> Forget the distance, forget the noise, and imagine that I’m standing right beside you.<br><br> Take a deep breath, think of one thing your heart truly wants, and let this moment belong only to you.<br><br> When you’re ready, blow out the candles.'  
+  document.getElementById('wishBtn').classList.add('hidden');
+}
+function startReasons(){
+  const items = document.querySelectorAll('#reasons .reason');
+  const btn = document.getElementById('p3Btn');
+
+  items.forEach(i => i.classList.remove('show'));
+  btn.classList.add('hidden');
+
+  items.forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add('show');
+      if(index === items.length - 1){
+        setTimeout(() => btn.classList.remove('hidden'), 700);
+      }
+    }, index * 1000);
+  });
+}
+function go(id, e){
+  if(e) glitter(e.clientX, e.clientY);
+
+  const music = document.getElementById('bgMusic');
+  const current = document.querySelector('.page.active');
+  const next = document.getElementById(id);
+
+  if(current === next) return;
+
+  // Start music only when leaving the cover page
+  if(id === 'p1' && music.paused){
+    music.currentTime = 0;
+    music.volume = 0.35;   // soft background volume
+    music.play().catch(() => {});
+  }
+
+  // Stop and reset music when returning to the cover page
+  if(id === 'p0'){
+    music.pause();
+    music.currentTime = 0;
+  }
+
+  // Animate current page out
+  current.style.transition = 'opacity .8s ease, transform .8s ease';
+  current.style.opacity = '0';
+  current.style.transform = 'translateX(-30px) scale(.98)';
+
+  setTimeout(() => {
+    current.classList.remove('active');
+    current.style.transition = '';
+    current.style.opacity = '';
+    current.style.transform = '';
+
+    next.classList.add('active');
+
+    // Always open the next page from the top
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    if(id === 'p4c') setupHoldHand();
+
+    next.style.opacity = '0';
+    next.style.transform = 'translateX(30px) scale(.98)';
+    next.style.transition = 'opacity .8s ease, transform .8s ease';
+
+    requestAnimationFrame(() => {
+      next.style.opacity = '1';
+      next.style.transform = 'translateX(0) scale(1)';
+    });
+
+    if(id === 'p2') playClip('v2');
+    if(id === 'p3'){ playClip('v3'); startReasons(); }
+    if(id === 'p5') playClip('v5');
+    if(id === 'p4') resetCake();
+    if(id === 'p1'){
+      const letter = document.getElementById('letter');
+      letter.style.opacity='1';
+      letter.style.transform='scale(1) rotate(0deg)';
+    }
+
+    setTimeout(() => {
+      next.style.transition = '';
+    }, 800);
+
+  }, 800);
+}
+
+function createFairyDust(){
+  const container = document.getElementById('fairyDust');
+
+  for(let i=0;i<40;i++){
+    const d = document.createElement('span');
+    d.className = 'dust';
+    d.style.left = Math.random()*100 + '%';
+    d.style.animationDuration = (8 + Math.random()*8) + 's';
+    d.style.animationDelay = (-Math.random()*16) + 's';
+    d.style.opacity = 0.35 + Math.random()*0.45;
+    d.style.transform = `scale(${0.6 + Math.random()*0.8})`;
+    container.appendChild(d);
+  }
+}
+
+createFairyDust();
+function glitter(x,y){
+  for(let i=0;i<24;i++){
+    const s=document.createElement('span');
+    s.className='spark';
+    s.style.left=(x-3)+'px';
+    s.style.top=(y-3)+'px';
+    s.style.setProperty('--x',(Math.random()*140-70)+'px');
+    s.style.setProperty('--y',(Math.random()*140-70)+'px');
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),800);
+  }
+}
+
+function blow(e){
+  glitter(e.clientX, e.clientY);
+
+  const flames = document.getElementById('flameGroup');
+flames.classList.add('out');
+
+const smoke = document.getElementById('smokeGroup');
+smoke.classList.add('show');
+
+  // Add magical glow to the card
+  const card = document.querySelector('#p4 .card');
+  card.classList.add('wished');
+
+  // Sparkles around the cake
+  for(let i=0;i<40;i++){
+    setTimeout(()=>{
+      glitter(
+        window.innerWidth/2 + (Math.random()*160-80),
+        window.innerHeight/2 + (Math.random()*120-60)
+      );
+    }, i*25);
+  }
+
+  // Romantic message
+  document.getElementById('wishText').innerHTML =
+    'Look at that… <br><br> The candles are out, and somewhere I’m smiling because I know you just made a wish.<br><br>  I don’t know what you wished for, but I hope life becomes a little kinder, your dreams become a little closer, and your heart feels a little more loved every single day. <br><br> And if wishes really do come true, I hope one of them brings us a little closer too.'
+
+  // Show the button after a short pause
+  setTimeout(() => {
+    document.getElementById('wishBtn').classList.remove('hidden');
+  }, 1600);
+}
+
+function fireworks(x,y){
+  const colors = ['#ff6fb5','#ff9ed2','#ffd6ec','#c4b5fd','#ffffff'];
+
+  for(let i=0;i<140;i++){
+    const p=document.createElement('span');
+    p.className='firework';
+p.style.boxShadow = '0 0 12px ' + colors[Math.floor(Math.random()*colors.length)];
+p.style.width = (6 + Math.random()*8) + 'px';
+p.style.height = p.style.width;
+    p.style.left=x+'px';
+    p.style.top=y+'px';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+    const angle=Math.random()*Math.PI*2;
+    const distance = 80 + Math.random() * 220;
+
+    p.style.setProperty('--x', Math.cos(angle)*distance+'px');
+    p.style.setProperty('--y', Math.sin(angle)*distance+'px');
+
+    p.style.animation='fireworkBurst .9s ease-out forwards';
+
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),900);
+  }
+}
+
+window.addEventListener('load', () => playClip('v1'));
+
+function openLetter(){
+  const letter = document.getElementById('letter');
+  const rect = letter.getBoundingClientRect();
+
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+
+  // Envelope opens
+  letter.style.transition = 'transform .55s ease, opacity .55s ease';
+  letter.style.transform = 'scale(1.9) rotate(-16deg)';
+  letter.style.opacity = '0';
+
+  // Let the fireworks be visible first
+  fireworks(x, y);
+  glitter(x, y);
+
+  // Wait so the envelope explosion is clearly seen
+    setTimeout(() => {
+  go('p2');
+}, 1500);
+}
+function createPetals(){
+  const container = document.getElementById('petals');
+
+  for(let i=0;i<16;i++){
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDuration = (12 + Math.random()*8) + 's';
+    p.style.animationDelay = (-Math.random()*20) + 's';
+    p.style.transform = `scale(${0.8 + Math.random()*0.7}) rotate(${Math.random()*360}deg)`;
+    container.appendChild(p);
+  }
+}
+createPetals();
+let holdTimer = null;
+
+function setupHoldHand(){
+  const hand = document.getElementById('holdHand');
+  const text = document.getElementById('holdText');
+  if(!hand) return;
+
+  const startHold = () => {
+    hand.classList.add('holding');
+    text.textContent = 'Keep holding…';
+
+    holdTimer = setTimeout(() => {
+      text.textContent = 'Thank you… 💛';
+
+      setTimeout(() => {
+        go('p5');
+      }, 900);
+
+    }, 5000);
+  };
+
+  const cancelHold = () => {
+    clearTimeout(holdTimer);
+    hand.classList.remove('holding');
+    text.textContent = 'Press and hold.';
+  };
+
+  hand.addEventListener('mousedown', startHold);
+  hand.addEventListener('touchstart', startHold);
+
+  hand.addEventListener('mouseup', cancelHold);
+  hand.addEventListener('mouseleave', cancelHold);
+  hand.addEventListener('touchend', cancelHold);
+}
+
+document.addEventListener('DOMContentLoaded', setupHoldHand);
+</script>
+<div id="pageTurn" class="pageTurn"></div>
+</body>
+</html>
