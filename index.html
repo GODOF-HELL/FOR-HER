@@ -584,6 +584,41 @@ video{
 @keyframes cursorFade{
   to{ border-right-color:transparent; }
 }
+  .petals{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+}
+
+.petal{
+  position:absolute;
+  width:14px;
+  height:10px;
+  background:linear-gradient(135deg,#ffd7e8,#ffc4dc);
+  border-radius:70% 30% 70% 30%;
+  opacity:.55;
+  filter:blur(.2px);
+  animation:petalFall linear infinite;
+}
+
+@keyframes petalFall{
+  0%{
+    transform:translateY(-12vh) translateX(0) rotate(0deg);
+    opacity:0;
+  }
+  10%{
+    opacity:.55;
+  }
+  50%{
+    transform:translateY(45vh) translateX(18px) rotate(120deg);
+  }
+  100%{
+    transform:translateY(112vh) translateX(-22px) rotate(260deg);
+    opacity:0;
+  }
+}
 </style>
 </head>
 <body>
@@ -593,6 +628,7 @@ video{
   <div class="balloon" style="right:10%;top:10%;background:#b388ff"></div>
   <div class="balloon" style="left:22%;top:2%;background:#ffd166"></div>
 </div>
+  <div id="petals" class="petals"></div>
 
 <div class="stars">
   <div class="star" style="top:8%;left:12%"></div>
@@ -1040,7 +1076,21 @@ function openLetter(){
   go('p2');
 }, 1500);
 }
+function createPetals(){
+  const container = document.getElementById('petals');
 
+  for(let i=0;i<16;i++){
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDuration = (12 + Math.random()*8) + 's';
+    p.style.animationDelay = (-Math.random()*20) + 's';
+    p.style.transform = `scale(${0.8 + Math.random()*0.7}) rotate(${Math.random()*360}deg)`;
+    container.appendChild(p);
+  }
+}
+
+createPetals();
 </script>
 <div id="pageTurn" class="pageTurn"></div>
 </body>
